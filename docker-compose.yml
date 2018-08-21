@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  berg8services:
+    image: berg8apidev
+    build:
+      context: .
+      dockerfile: Berg8api\Dockerfile
