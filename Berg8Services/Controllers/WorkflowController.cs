@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Threading.Tasks;
-using api.Model;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
+    using api.Model;
     using api.Model.Request;
-    using Microsoft.AspNetCore.Cors;
-
+    
     [EnableCors(Setting.policyOriginName)]
     public class WorkflowController : Controller, IUIAction<IList<Data>>
     {

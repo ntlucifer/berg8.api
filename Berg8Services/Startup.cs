@@ -39,6 +39,7 @@ namespace api
                 options => options.AddPolicy(Setting.policyOriginName,
                             builder => {
                                         builder
+                                    
                                                .WithOrigins(Setting.strOriginApiDomain)
                                                .AllowCredentials()
                                                .AllowAnyMethod()
