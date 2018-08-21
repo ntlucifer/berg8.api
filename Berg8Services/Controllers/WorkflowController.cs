@@ -95,7 +95,6 @@ namespace api.Controllers
                 {
                     datas.Add(new Data
                     {
-                        
                         ActivityName = request.FILTER.ACTIVITY_NAME,
                         DocumentNo = string.Format("DocumentNo {0}", i),
                         Plan = new Plan()
