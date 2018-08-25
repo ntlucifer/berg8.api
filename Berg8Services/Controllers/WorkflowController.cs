@@ -25,13 +25,18 @@ namespace api.Controllers
         #region [ GetDocuments ]
         //[DisableCors]
         [HttpPost]
-        public IActionResult GetDocuments([FromBody] ACTIVITY_REQUEST request)
+        public IActionResult GetDocuments([FromBody] ACTIVITY_REQUEST request )
         {
             IList<Data> data = new List<Data>();
             List<Messages> message = new List<Messages>();
             DocumentResult result = new DocumentResult();
             try
             {
+                //if (request == null)
+                //{
+                //    request = new ACTIVITY_REQUEST() { ACTION = ACTIONS.INIT };
+                //    request.FILTER = new FILTER_ACTIVITY();
+                //}
                 if (request.ACTION == ACTIONS.INIT) 
                     data = this.REQ_INTI(request);
                 else if (request.ACTION == ACTIONS.AMEND)
@@ -99,16 +104,16 @@ namespace api.Controllers
                         DocumentNo = string.Format("DocumentNo {0}", i),
                         Plan = new Plan()
                         {
-                            PlanType = request.FILTER.REQUEST_TYPE.Count() <= 1? "Plan" : request.FILTER.REQUEST_TYPE[i % 2],
-                            Begin = request.FILTER.PERIOD_EXPENSE.BEGIN == null? DateTime.Now.ToString("yyyy-MM-dd") : request.FILTER.PERIOD_EXPENSE.BEGIN,
-                            End = request.FILTER.PERIOD_EXPENSE.END == null? new DateTime(9999, 12, 31).ToString("yyyy-MM-dd") : request.FILTER.PERIOD_EXPENSE.END
+                            PlanType = request.FILTER.REQUESTOR == null || request.FILTER.REQUEST_TYPE.Count() <= 1 ? "Plan" : request.FILTER.REQUEST_TYPE[i % 2],
+                            Begin = request.FILTER.PERIOD_EXPENSE.BEGIN == null || request.FILTER.PERIOD_EXPENSE.BEGIN == ""? DateTime.Now.ToString("yyyy-MM-dd") : request.FILTER.PERIOD_EXPENSE.BEGIN,
+                            End = request.FILTER.PERIOD_EXPENSE.END == null || request.FILTER.PERIOD_EXPENSE.END == "" ? new DateTime(9999, 12, 31).ToString("yyyy-MM-dd") : request.FILTER.PERIOD_EXPENSE.END
                         },
                         Description = string.Format("Request {0}", i),
                         Version = i.ToString(),
                         Revision = "1",
                         Requestor = new Requestor()
                         {
-                            Name = request.FILTER.REQUESTOR == null? "xercise" : request.FILTER.REQUESTOR,
+                            Name = request.FILTER == null || request.FILTER.REQUESTOR  == null || request.FILTER.REQUESTOR == ""? "xercise Lucifer" : request.FILTER.REQUESTOR,
                             Mobile = "083999XXX9",
                             ActionOn = DateTime.Now.ToString("yyyy-MM-dd")
                         }

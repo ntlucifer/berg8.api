@@ -32,15 +32,13 @@ namespace api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-
             services.AddMvc();
             services.AddCors(
                 options => options.AddPolicy(Setting.policyOriginName,
                             builder => {
                                         builder
-                                    
-                                               .WithOrigins(Setting.strOriginApiDomain)
+                                                .AllowAnyOrigin()
+                                               //.WithOrigins(Setting.strOriginApiDomain)
                                                .AllowCredentials()
                                                .AllowAnyMethod()
                                                //.WithHeaders("accept", "content-type", "origin", "x-custom-header")
