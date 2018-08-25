@@ -73,8 +73,6 @@ namespace api.Controllers
                 result.data = data;
                 result.message = message;
             }
-
-
             return Ok(result);
         }
 
