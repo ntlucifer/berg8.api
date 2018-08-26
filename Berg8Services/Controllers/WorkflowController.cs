@@ -129,7 +129,7 @@ namespace api.Controllers
 
                     oAction = DocumentAction.CreateInstance();
                     oAction.ActionCode = "REJECT";
-                    oAction.ActionText = "REJECT";
+                    oAction.ActionText = "ไม่อนุมัติ";
                     oAction.Enable = true;
                     oAction.Visible = true;
                     oData.Actions.Add(oAction);
