@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace api.Model
 {
@@ -9,7 +6,5 @@ namespace api.Model
     {
         public IEnumerable<Data> data { get; set; }
         public IEnumerable<Messages> message { get; set; }
-
     }
-
 }
