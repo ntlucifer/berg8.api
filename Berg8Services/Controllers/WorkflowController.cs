@@ -25,19 +25,19 @@ namespace api.Controllers
         #region [ GetDocuments ]
         //[DisableCors]
         [HttpPost]
-        public IActionResult GetDocuments()
+        public IActionResult GetDocuments([FromBody] ACTIVITY_REQUEST request)
         {
             IList<Data> data = new List<Data>();
             List<Messages> message = new List<Messages>();
             DocumentResult result = new DocumentResult();
-            ACTIVITY_REQUEST request = null;
+            //ACTIVITY_REQUEST request = null;
             try
             {
-                if (request == null)
-                {
-                    request = new ACTIVITY_REQUEST() { ACTION = ACTIONS.INIT };
-                    request.FILTER = new FILTER_ACTIVITY();
-                }
+                //if (request == null)
+                //{
+                //    request = new ACTIVITY_REQUEST() { ACTION = ACTIONS.INIT };
+                //    request.FILTER = new FILTER_ACTIVITY();
+                //}
                 if (request.ACTION == ACTIONS.INIT)
                     data = this.REQ_INTI(request);
                 else if (request.ACTION == ACTIONS.AMEND)
