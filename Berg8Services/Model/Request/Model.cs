@@ -65,6 +65,5 @@ namespace api.Model.Request
         public PROFILE PROFILE { get; set; }
         public string[] SELECTION { get; set; }
         public ACTIONS ACTION { get; set; }
-
     }
 }
