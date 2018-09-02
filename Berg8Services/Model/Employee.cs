@@ -8,11 +8,14 @@ namespace api.Model
         {
 
         }
-
+        [DefaultValue(value: "")]
+        public string Code { get; set; }
         [DefaultValue(value: "")]
         public string Name { get; set; }
         [DefaultValue(value: "")]
         public string Mobile { get; set; }
+        [DefaultValue(value: "")]
+        public string Email { get; set; }
         [DefaultValue(value: "")]
         public string ActionOn { get; set; }
 

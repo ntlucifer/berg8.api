@@ -66,4 +66,10 @@ namespace api.Model.Request
         public string[] SELECTION { get; set; }
         public ACTIONS ACTION { get; set; }
     }
+
+    public class REQ_COMMAND
+    {
+        public string REFRESH_TOKEN { get; set; }
+        public Employee OPERATOR { get; set; }
+    }
 }

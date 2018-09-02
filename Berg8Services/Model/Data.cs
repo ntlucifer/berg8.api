@@ -31,7 +31,7 @@ namespace api.Model
         [DefaultValue(value: null)]
         public Employee Approver { get; set; }
         [DefaultValue(value: null)]
-        public List<DocumentAction> Actions { get; set; }
+        public IList<ACTION> Actions { get; set; }
 
         public static Data CreateInstance()
         {

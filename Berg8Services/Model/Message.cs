@@ -20,11 +20,11 @@ namespace api.Model
 
         public static Messages CreateInstance()
         {
-            return new Messages();
+            return new Messages() { Code = MessageCode.Success.ToString(),Message =""};
         }
-        public static Messages CreateFailInstance()
+        public static Messages CreateFailInstance(Exception ex)
         {
-            return new Messages() { Code = MessageCode.Error.ToString()};
+            return new Messages() { Code = MessageCode.Error.ToString(),Message = ex.Message};
         }
     }
     public enum MessageCode

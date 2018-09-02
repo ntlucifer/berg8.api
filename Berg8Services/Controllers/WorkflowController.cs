@@ -59,7 +59,7 @@ namespace api.Controllers
             }
             catch (Exception ex)
             {
-                message.Add(Messages.CreateFailInstance());
+                message.Add(Messages.CreateFailInstance(ex));
             }
             finally
             {
@@ -68,26 +68,104 @@ namespace api.Controllers
             }
             return Ok(result);
         }
-
         public IList<Data> Initialized(IFilter filter)
         {
             throw new NotImplementedException();
         }
-
         public IList<Data> Update(IFilter filter)
         {
             throw new NotImplementedException();
         }
         #endregion [ GetDocuments ]
+        #region GetCommandButton
+        [HttpPost]
+        public IActionResult GetCommandActions(REQ_COMMAND pRequest)
+        {
+            IList<ACTION> oActions = new List<ACTION>();
+            List<Messages> oMessage = new List<Messages>();
+            RES_COMMAND oResult = new RES_COMMAND();
 
+            try
+            {
+                //if (pRequest.OPERATOR.Code == "")
+                //{
+                oActions = this.REQ_COMMAND();
+                oMessage.Add(Messages.CreateInstance());
+                //}
+            }
+            catch (Exception ex)
+            {
+                oMessage.Add(Messages.CreateFailInstance(ex));
+            }
+            finally
+            {
+                oResult.ACTIONS = oActions;
+                oResult.MESSAGE = oMessage;
+            }
+            return Ok(oResult);
+        }
+        #endregion
+        private IList<ACTION> REQ_COMMAND()
+        {
+            IList<ACTION> oDocumentActions = new List<ACTION>();
+            ACTION oAction = null;
+            oAction = ACTION.CreateInstance();
+            oAction.CODE = "ADD";
+            oAction.TEXT = "เพิ่ม";
+            oAction.ENABLED = true;
+            oAction.VISIBLED = true;
+            oDocumentActions.Add(oAction);
 
+            oAction = ACTION.CreateInstance();
+            oAction.CODE = "AMEND";
+            oAction.TEXT = "แก้ไข";
+            oAction.ENABLED = true;
+            oAction.VISIBLED = true;
+            oDocumentActions.Add(oAction);
+
+            oAction = ACTION.CreateInstance();
+            oAction.CODE = "APPROVE";
+            oAction.TEXT = "อนุมัติ";
+            oAction.ENABLED = true;
+            oAction.VISIBLED = true;
+            oDocumentActions.Add(oAction);
+
+            oAction = ACTION.CreateInstance();
+            oAction.CODE = "REJECT";
+            oAction.TEXT = "ไม่อนุมัติ";
+            oAction.ENABLED = true;
+            oAction.VISIBLED = true;
+            oDocumentActions.Add(oAction);
+
+            oAction = ACTION.CreateInstance();
+            oAction.CODE = "SNDBACK";
+            oAction.TEXT = "ส่งกลับ";
+            oAction.ENABLED = true;
+            oAction.VISIBLED = true;
+            oDocumentActions.Add(oAction);
+
+            oAction = ACTION.CreateInstance();
+            oAction.CODE = "XLS";
+            oAction.TEXT = "นำออกเป็น Excel";
+            oAction.ENABLED = true;
+            oAction.VISIBLED = true;
+            oDocumentActions.Add(oAction);
+
+            oAction = ACTION.CreateInstance();
+            oAction.CODE = "PDF";
+            oAction.TEXT = "นำออกเป็น PDF";
+            oAction.ENABLED = true;
+            oAction.VISIBLED = true;
+            oDocumentActions.Add(oAction);
+            return oDocumentActions;
+        }
         private IList<Data> REQ_INTI(ACTIVITY_REQUEST request)
         {
             IList<Data> datas = new List<Data>();
             try
             {
                 Data oData = null;
-                DocumentAction oAction = null; 
+                ACTION oAction = null; 
                 for (int i = 0; i < 50; i++)
                 {
                     oData = Data.CreateInstance();
@@ -112,48 +190,8 @@ namespace api.Controllers
                     oData.Approver.Name = request.FILTER == null || request.FILTER.REQUESTOR == null || request.FILTER.REQUESTOR == "" ? "Lucifer" : request.FILTER.REQUESTOR;
                     oData.Approver.Mobile = "0839990003";
                     oData.Approver.ActionOn = DateTime.Now.ToString("yyyy-MM-dd");
-                    oData.Actions = new List<DocumentAction>();
-                    //oAction = DocumentAction.CreateInstance();
-                    //oAction.ActionCode = "ADD";
-                    //oAction.ActionText = "เพิ่ม";
-                    //oAction.Enable = true;
-                    //oAction.Visible = true;
-                    //oData.Actions.Add(oAction);
+                    oData.Actions = this.REQ_COMMAND();
 
-                    oAction = DocumentAction.CreateInstance();
-                    oAction.ActionCode = "APPROVE";
-                    oAction.ActionText = "อนุมัติ";
-                    oAction.Enable = true;
-                    oAction.Visible = true;
-                    oData.Actions.Add(oAction);
-
-                    oAction = DocumentAction.CreateInstance();
-                    oAction.ActionCode = "REJECT";
-                    oAction.ActionText = "ไม่อนุมัติ";
-                    oAction.Enable = true;
-                    oAction.Visible = true;
-                    oData.Actions.Add(oAction);
-
-                    oAction = DocumentAction.CreateInstance();
-                    oAction.ActionCode = "SNDBACK";
-                    oAction.ActionText = "ส่งกลับ";
-                    oAction.Enable = true;
-                    oAction.Visible = true;
-                    oData.Actions.Add(oAction);
-
-                    oAction = DocumentAction.CreateInstance();
-                    oAction.ActionCode = "XLS";
-                    oAction.ActionText = "นำออกเป็น Excel";
-                    oAction.Enable = true;
-                    oAction.Visible = true;
-                    oData.Actions.Add(oAction);
-
-                    oAction = DocumentAction.CreateInstance();
-                    oAction.ActionCode = "PDF";
-                    oAction.ActionText = "นำออกเป็น PDF";
-                    oAction.Enable = true;
-                    oAction.Visible = true;
-                    oData.Actions.Add(oAction);
                     datas.Add(oData);
                 }
             }
