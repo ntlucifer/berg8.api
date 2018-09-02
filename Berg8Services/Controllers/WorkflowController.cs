@@ -79,7 +79,7 @@ namespace api.Controllers
         #endregion [ GetDocuments ]
         #region GetCommandButton
         [HttpPost]
-        public IActionResult GetCommandActions(REQ_COMMAND pRequest)
+        public IActionResult GetCommandActions([FromBody] REQ_COMMAND pRequest)
         {
             IList<ACTION> oActions = new List<ACTION>();
             List<Messages> oMessage = new List<Messages>();
