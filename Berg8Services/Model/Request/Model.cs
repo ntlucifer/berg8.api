@@ -72,4 +72,10 @@ namespace api.Model.Request
         public string REFRESH_TOKEN { get; set; }
         public Employee OPERATOR { get; set; }
     }
+
+    public class REQ_TASK
+    {
+        public string REFRESH_TOKEN { get; set; }
+        public Employee OPERATOR { get; set; }
+    }
 }
