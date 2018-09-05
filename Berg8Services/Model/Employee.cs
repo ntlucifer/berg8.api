@@ -9,15 +9,16 @@ namespace api.Model
 
         }
         [DefaultValue(value: "")]
-        public string Code { get; set; }
+        public string CODE { get; set; }
         [DefaultValue(value: "")]
-        public string Name { get; set; }
+        public string NAME { get; set; }
         [DefaultValue(value: "")]
-        public string Mobile { get; set; }
+        public string MOBILE { get; set; }
         [DefaultValue(value: "")]
-        public string Email { get; set; }
+        public string EMAIL { get; set; }
         [DefaultValue(value: "")]
-        public string ActionOn { get; set; }
+        public string ACTIONON { get; set; }
+        public string CONTACT_NO { get; internal set; }
 
         public static Employee CreateInstance()
         {

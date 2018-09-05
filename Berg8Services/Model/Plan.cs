@@ -10,11 +10,11 @@ namespace api.Model
         }
 
         [DefaultValue(value: "")]
-        public string PlanType { get; set; }
+        public string PLANTYPE { get; set; }
         [DefaultValue(value: "")]
-        public string Begin { get; set; }
+        public string BEGIN { get; set; }
         [DefaultValue(value: "")]
-        public string End { get; set; }
+        public string END { get; set; }
 
         public static Plan CreateInstance()
         {

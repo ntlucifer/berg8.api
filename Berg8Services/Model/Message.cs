@@ -14,17 +14,17 @@ namespace api.Model
         }
 
         [DefaultValue(value: "Success")]
-        public string Code { get; set; }
+        public string CODE { get; set; }
         [DefaultValue(value: "")]
-        public string Message { get; set; }
+        public string MESSAGE { get; set; }
 
         public static Messages CreateInstance()
         {
-            return new Messages() { Code = MessageCode.Success.ToString(),Message =""};
+            return new Messages() { CODE = MessageCode.Success.ToString(),MESSAGE =""};
         }
         public static Messages CreateFailInstance(Exception ex)
         {
-            return new Messages() { Code = MessageCode.Error.ToString(),Message = ex.Message};
+            return new Messages() { CODE = MessageCode.Error.ToString(),MESSAGE = ex.Message};
         }
     }
     public enum MessageCode
