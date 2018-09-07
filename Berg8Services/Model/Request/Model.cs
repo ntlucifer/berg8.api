@@ -58,16 +58,20 @@ namespace api.Model.Request
         PDF
     }
 
-    public class ACTIVITY_REQUEST
+    public class REQ_DOCUMENT
     {
         public string REFRESH_TOKEN { get; set; }
         public FILTER_ACTIVITY FILTER { get; set; }
-        public PROFILE PROFILE { get; set; }
-        public string[] SELECTION { get; set; }
-        public ACTIONS ACTION { get; set; }
+        public Employee OPERATOR { get; set; }
     }
 
     public class REQ_COMMAND
+    {
+        public string REFRESH_TOKEN { get; set; }
+        public Employee OPERATOR { get; set; }
+    }
+
+    public class REQ_TASK
     {
         public string REFRESH_TOKEN { get; set; }
         public Employee OPERATOR { get; set; }

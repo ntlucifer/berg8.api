@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace api.Model
 {
-    public class RES_COMMAND
+    public class RES_TASK
     {
-        public IList<ACTION> ACTIONS { get; set; }
-        public IList<Messages> MESSAGE { get; set; }
+        public IList<TASK> TASKS { get; set; }
+        public IList<Messages> MESSAGES { get; set; }
     }
 }
