@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using api.Controllers;
+﻿using api.Controllers;
 
 namespace api.Model.Request
 {
@@ -16,6 +14,7 @@ namespace api.Model.Request
     {
         public string BUTTON { get; set; }
     }
+
     public class FILTER_ACTIVITY : IFilter
     {
         public string ACTIVITY_NAME { get; set; }
@@ -75,5 +74,6 @@ namespace api.Model.Request
     {
         public string REFRESH_TOKEN { get; set; }
         public Employee OPERATOR { get; set; }
+        public string WIDGET { get; set; }
     }
 }
